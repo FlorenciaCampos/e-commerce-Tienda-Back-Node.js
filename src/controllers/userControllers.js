@@ -1,6 +1,6 @@
 import { createUserService, loginUserService, getUsersService, deleteUserService } from '../service/userService.js'
 
-
+//crear usuarios
 export const createUser = async (req, res) => {
     try {
         const response = await createUserService(req.body)
@@ -9,7 +9,7 @@ export const createUser = async (req, res) => {
         return res.status(500).json({ message: "Internal server error", error: error.message })
     }
 }
-
+//logueo de usuario valido
 export const loginUser = async (req, res) => {
     try {
       const { email, password } = req.body; 
