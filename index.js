@@ -15,6 +15,8 @@ app.use(express.json());
 // Conexión a la base de datos
 connectDB();
 
+//Rutas base - Agrupa las rutas de un recurso
+app.use("/api/user", userRoute)
 
 app.listen(PORT, () => {
   console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
