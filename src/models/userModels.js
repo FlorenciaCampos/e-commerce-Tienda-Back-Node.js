@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
-import { isGoodPassword } from "../utils/validator.js";
 import bcrypt from 'bcrypt';
+import { isGoodPassword } from "../utils/validator.js";
+
 
 const userSchema = new mongoose.Schema({
     name:{

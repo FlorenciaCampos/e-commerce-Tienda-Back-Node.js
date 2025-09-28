@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { PORT } from "./config.js";
 import { connectDB } from "./src/db/db.js";
+import { userRoute } from './src/routes/userRoute.js'
 
 dotenv.config();
 
