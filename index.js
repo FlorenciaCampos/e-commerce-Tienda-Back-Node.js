@@ -5,6 +5,7 @@ import { PORT } from "./config.js";
 import { connectDB } from "./src/db/db.js";
 import { userRoute } from './src/routes/userRoute.js';
 import { categoryRoute  } from './src/routes/categoryRoute.js';
+import { productRoute } from "./src/routes/productRoute.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ connectDB();
 //Rutas base - Agrupa las rutas de un recurso
 app.use("/api/user", userRoute)
 app.use("/api/category", categoryRoute)
+app.use("/api/product", productRoute)
 
 app.listen(PORT, () => {
   console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);

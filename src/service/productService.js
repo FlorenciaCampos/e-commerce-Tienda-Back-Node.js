@@ -1,4 +1,4 @@
-import Product, { statusEnum } from "../models/productModel.js";
+import Product, { statusEnum } from "../models/productsModels.js";
 
 export const createProductService = async (productData) => {
    const newProduct = new Product(productData)
