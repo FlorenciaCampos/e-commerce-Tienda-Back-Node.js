@@ -1,5 +1,5 @@
 import express from 'express'
-import { createProduct } from '../controllers/productControllers.js'
+import { createProduct,getProducts } from '../controllers/productControllers.js'
 
 export const productRoute = express.Router()
 
@@ -7,3 +7,5 @@ export const productRoute = express.Router()
 
 
 productRoute.post("/create", createProduct)
+
+productRoute.get("/getProducts",getProducts)
