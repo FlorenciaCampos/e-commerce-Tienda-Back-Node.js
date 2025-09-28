@@ -15,11 +15,6 @@ app.use(express.json());
 // Conexión a la base de datos
 connectDB();
 
-// Rutas de prueba
-app.get("/", (req, res) => {
-  res.send("🚀 Bienvenida a Mi Cuoco API");
-});
-
 
 app.listen(PORT, () => {
   console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
