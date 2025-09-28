@@ -57,4 +57,12 @@ export const getUsersService = async () => {
  
     return users
  }
+
+ // Borrar el usuario
+export const deleteUserService = async (userId) => {
+    await findUserByIdAndCheck(userId)
+    
+    await User.findByIdAndDelete(userId)
+    return { message: "User deleted succesfully" }
+}
  

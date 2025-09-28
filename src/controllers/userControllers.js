@@ -1,4 +1,4 @@
-import { createUserService, loginUserService, getUsersService } from '../service/userService.js'
+import { createUserService, loginUserService, getUsersService, deleteUserService } from '../service/userService.js'
 
 
 export const createUser = async (req, res) => {
@@ -31,6 +31,20 @@ export const getUsers = async (req, res) => {
         console.log({error})
         if(error.statusCode === 204){
             return res.sendStatus(error.statusCode)
+        }
+        return res.status(500).json({ message: "Internal server error", error: error.message })
+    }
+}
+
+// Borrar el usuario
+export const deleteUser = async (req, res) => {
+    try {
+        const userId = req.params.id
+        const result = await deleteUserService(userId)
+        return res.status(200).json(result)
+    } catch (error) {
+        if(error.statusCode === 404){
+            return res.status(error.statusCode).json({ message: error.message })
         }
         return res.status(500).json({ message: "Internal server error", error: error.message })
     }
