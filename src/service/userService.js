@@ -2,6 +2,7 @@ import { SECRET } from "../../config.js";
 import User from "../models/userModels.js"
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import { findUserByIdAndCheck } from "../utils/userHelpers.js";
 // Creamos el usuario
 
 export const createUserService = async (userData) => {

@@ -1,4 +1,4 @@
-import User from "../models/userModel.js";
+import User from "../models/userModels.js";
 
 export const findUserByIdAndCheck = async (userId) => {
     const userExist = await User.findOne({ _id: userId })
