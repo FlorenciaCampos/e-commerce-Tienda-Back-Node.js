@@ -22,3 +22,13 @@ export const deleteProductService = async (id) => {
     const deletedProduct = await Product.findByIdAndDelete(id);
     return deletedProduct;
 };
+
+// ✅ Service para actualizar producto
+export const updateProductService = async (id, updatedData) => {
+    const updatedProduct = await Product.findByIdAndUpdate(id, updatedData, {
+      new: true, // devuelve el producto ya actualizado
+    });
+  
+    return updatedProduct;
+  };
+  
