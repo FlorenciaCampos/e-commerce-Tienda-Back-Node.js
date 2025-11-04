@@ -1,11 +1,21 @@
-import express from 'express'
-import { createProduct,getProducts } from '../controllers/productControllers.js'
+import express from 'express';
+import {
+  createProduct,
+  getProducts,
+  updateProduct,   // ✅ AGREGAR
+  deleteProduct    // ✅ AGREGAR
+} from '../controllers/productControllers.js';
 
-export const productRoute = express.Router()
+export const productRoute = express.Router();
 
-//Endpoints
+// CREATE
+productRoute.post("/create", createProduct);
 
+// READ
+productRoute.get("/getProducts", getProducts);
 
-productRoute.post("/create", createProduct)
+// UPDATE  ✅ (editar)
+productRoute.put("/update/:id", updateProduct);
 
-productRoute.get("/getProducts",getProducts)
+// DELETE ✅ (eliminar)
+productRoute.delete("/delete/:id", deleteProduct);

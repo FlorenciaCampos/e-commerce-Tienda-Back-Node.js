@@ -16,3 +16,9 @@ export const getProductsService = async () => {
     }
     return products
 }
+
+// ✅ Service para eliminar producto
+export const deleteProductService = async (id) => {
+    const deletedProduct = await Product.findByIdAndDelete(id);
+    return deletedProduct;
+};

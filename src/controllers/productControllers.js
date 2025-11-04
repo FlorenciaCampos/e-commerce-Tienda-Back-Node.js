@@ -1,4 +1,4 @@
-import { createProductService, getProductsService} from '../service/productService.js'
+import { createProductService, getProductsService, deleteProductService } from '../service/productService.js'
 
 
 export const createProduct = async (req, res) => {
@@ -10,6 +10,7 @@ export const createProduct = async (req, res) => {
     }
 }
 
+  
 
 export const getProducts = async (req, res) => {
     try {
@@ -25,3 +26,24 @@ export const getProducts = async (req, res) => {
         return res.status(500).json({message: "internal server error", error: error.message})
     }
 }
+
+
+export const deleteProduct = async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      const deleted = await deleteProductService(id);
+  
+      if (!deleted) {
+        return res.status(404).json({ message: "Producto no encontrado" });
+      }
+  
+      return res.status(200).json({ message: "Producto eliminado correctamente" });
+    } catch (error) {
+      return res.status(500).json({
+        message: "Error al eliminar el producto",
+        error: error.message,
+      });
+    }
+  };
+  
