@@ -42,6 +42,10 @@ const productSchema = new mongoose.Schema({
                 message: props => `${props.value} it's not a valid status`
             }
     },
+    image: {
+        type: String,
+        required: false,
+      },
    
     category: {type: mongoose.Schema.Types.ObjectId, ref: "category" },
 
