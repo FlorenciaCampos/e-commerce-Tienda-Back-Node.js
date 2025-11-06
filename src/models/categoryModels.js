@@ -13,4 +13,4 @@ const categorySchema = new mongoose.Schema({
 }, {
     timestamps: true} ) //se agregan dos campos: createdAt: fecha en que se creo el doc// updateAt: en que se modifica
 
-    export default mongoose.model("category", categorySchema) //"category",lo usamos como referencia en products
+    export default mongoose.model("category", categorySchema) 

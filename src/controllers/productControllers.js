@@ -6,9 +6,7 @@ import {
   getProductByIdService,
 } from "../service/productService.js";
 
-/**
- * Crear un producto
- */
+
 export const createProduct = async (req, res) => {
   try {
     const productData = req.body;
@@ -25,9 +23,7 @@ export const createProduct = async (req, res) => {
   }
 };
 
-/**
- * Obtener todos los productos
- */
+
 export const getProducts = async (req, res) => {
   try {
     const products = await getProductsService();
@@ -42,9 +38,7 @@ export const getProducts = async (req, res) => {
   }
 };
 
-/**
- * Obtener un producto por ID
- */
+
 export const getProductById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -64,9 +58,7 @@ export const getProductById = async (req, res) => {
   }
 };
 
-/**
- * Eliminar un producto
- */
+
 export const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -87,9 +79,7 @@ export const deleteProduct = async (req, res) => {
   }
 };
 
-/**
- * Editar un producto
- */
+
 export const updateProduct = async (req, res) => {
   try {
     const updatedData = req.body;

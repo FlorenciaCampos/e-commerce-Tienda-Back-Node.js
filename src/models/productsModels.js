@@ -5,7 +5,7 @@ export const statusEnum = [ "AVAILABLE", "NOT AVAILABLE", "DISCONTINUED" ]
 const productSchema = new mongoose.Schema({
     name: {
         type: String,
-        // Si el cliente no me envia el dato, le respondo con el mensaje
+       
         required: [ true, "El campo nombre es requerido" ],
         minLength: 3,
         maxLength: 50,
