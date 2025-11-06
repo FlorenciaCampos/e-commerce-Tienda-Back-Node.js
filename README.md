@@ -81,18 +81,31 @@ Iniciar el servidor
 Endpoints
  
 productsRoute
+
 productRoute.get("/getProducts", getProducts);
+
 productRoute.get("/getProducts/:id", getProductById);
+
 productRoute.post("/create", upload.single("image"), createProduct);
+
 productRoute.put("/update/:id", upload.single("image"), updateProduct);
+
 productRoute.delete("/delete/:id", deleteProduct);
+
 --
 Se deja igualmente, los endpoints de Usuarios
+
 UserRoute
+
+
 userRoute.post("/create", createUser);
+
 userRoute.get("/getUsers", getUsers)
+
 userRoute.post("/login", loginUser);
+
 userRoute.delete("/deleteUser/:id", deleteUser)
+
 --
 
 Datos Mock
