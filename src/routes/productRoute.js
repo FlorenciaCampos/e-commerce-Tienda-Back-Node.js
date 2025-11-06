@@ -1,21 +1,17 @@
 import express from 'express';
-import {
-  createProduct,
-  getProducts,
-  updateProduct,   // ✅ AGREGAR
-  deleteProduct    // ✅ AGREGAR
-} from '../controllers/productControllers.js';
+import { createProduct, getProducts, updateProduct, deleteProduct } from '../controllers/productControllers.js';
+import { upload } from "../config/multer.js";
 
 export const productRoute = express.Router();
-
-// CREATE
-productRoute.post("/create", createProduct);
 
 // READ
 productRoute.get("/getProducts", getProducts);
 
-// UPDATE  ✅ (editar)
-productRoute.put("/update/:id", updateProduct);
-
-// DELETE ✅ (eliminar)
+// DELETE
 productRoute.delete("/delete/:id", deleteProduct);
+
+// CREATE (con imagen)
+productRoute.post("/create", upload.single("image"), createProduct);
+
+// UPDATE (con imagen)
+productRoute.put("/update/:id", upload.single("image"), updateProduct);

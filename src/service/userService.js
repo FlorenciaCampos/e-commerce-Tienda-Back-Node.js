@@ -1,4 +1,4 @@
-import { SECRET } from "../../config.js";
+import { SECRET } from "../config/config.js";
 import User from "../models/userModels.js"
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
