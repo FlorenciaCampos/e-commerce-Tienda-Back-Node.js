@@ -46,24 +46,35 @@ Tecnologías utilizadas
 
 Cómo ejecutar el proyecto
 
-repo del back
+repositorio del backend
+
+
 [git clone https://github.com/TU-USUARIO/e-commerce-Tienda-Back-Node.js.git
 cd e-commerce-Tienda-Back-Node.js](https://github.com/FlorenciaCampos/e-commerce-Tienda-Back-Node.js.git)
 
-repo del front
+repositorio del frontend
+
+
 [https://github.com/FlorenciaCampos/micuoco-admin.git](https://github.com/FlorenciaCampos/micuoco-admin.git)
 ---
 Instalar dependencias
+
 npm install
+
 ---
 Iniciar el servidor
+ 
  npm run dev
+ 
  ----
 .env
+ 
  PORT=3000
  MONGODB_URI=mongodb://127.0.0.1:27017/mi_cuoco
  SECRET=miclavesupersegura
+ 
  ----
+ 
  Servidor corriendo en http://localhost:3000
  --
 
@@ -87,6 +98,7 @@ userRoute.delete("/deleteUser/:id", deleteUser)
 Datos Mock
  
 Login
+
 mail:  florencia@gmail.com
 contraseña: Flor123#
 
