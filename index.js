@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import path from "path";                   // ✅ agregado
-import { fileURLToPath } from "url";       // ✅ agregado
+import path from "path";
+import { fileURLToPath } from "url";
 import { PORT } from "./src/config/config.js";
 import { connectDB } from "./src/db/db.js";
 import { userRoute } from './src/routes/userRoute.js';
@@ -13,7 +13,7 @@ dotenv.config();
 
 const app = express();
 
-// 🔧 Necesario para obtener __dirname en ES Modules
+// Necesario para obtener __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -21,8 +21,8 @@ const __dirname = path.dirname(__filename);
 app.use(cors());
 app.use(express.json());
 
-// ✅ Servir imágenes estáticas (importantísimo)
-app.use("/uploads", express.static(path.join(process.cwd(), "src/uploads")));
+// ✅ Servir imágenes estáticas (solo UNA VEZ)
+app.use("/uploads", express.static(path.join(__dirname, "src/uploads")));
 
 // Conexión a la base de datos
 connectDB();
@@ -34,4 +34,5 @@ app.use("/api/product", productRoute);
 
 app.listen(PORT, () => {
   console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`📁 Archivos estáticos expuestos en: http://localhost:${PORT}/uploads/`);
 });
