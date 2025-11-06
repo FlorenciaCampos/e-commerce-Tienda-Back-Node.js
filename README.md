@@ -1,32 +1,44 @@
 # 🛒 Mi Cuoco - API REST (Node.js + Express + MongoDB)
 
-API RESTful desarrollada como parte del Trabajo Práctico de la materia Backend con MongoDB.  
-Permite administrar productos de una tienda (CRUD completo), gestionar categorías y autenticación de usuarios con JWT.
-
----
-Tecnologías utilizadas
-
-- Node.js
-- Express
-- MongoDB + Mongoose
-- Multer (para subida de imágenes)
-- JWT (autenticación)
-- bcrypt (hash de contraseñas)
-- dotenv (variables de entorno)
-- CORS
+API RESTful desarrollada como parte del Trabajo Práctico de Backend con MongoDB.  
+Permite administrar productos de una tienda de comiditas de tela con un **CRUD completo**, gestión de usuarios y subida de imágenes con Multer.
 
 ---
 
+## ✨ Características principales
+
+✅ CRUD completo de productos (crear, leer, actualizar y eliminar)  
+✅ Subida de imágenes reales usando **multer**  
+✅ Manejo de categorías de productos  
+✅ Autenticación con **JWT + bcrypt**  
+✅ Estructura basada en **MVC + Services**  
+✅ Conexión a MongoDB con **Mongoose**
+
 ---
 
-## 🗃️ Modelo de la base de datos
+## 🛠️ Tecnologías utilizadas
+
+| Tecnología | Uso |
+|------------|-----|
+| Node.js | Entorno de ejecución |
+| Express.js | Framework backend |
+| MongoDB + Mongoose | Base de datos NoSQL |
+| Multer | Upload de imágenes (local en `/uploads/products/`) |
+| JWT | Autenticación mediante token |
+| bcrypt | Hash de contraseñas |
+| dotenv | Variables de entorno |
+| CORS | Permitir conexiones desde frontend |
+
+---
+
+## 🗃️ Modelos de la Base de Datos
 
 ### 🟦 Usuario
 | Campo | Tipo | Requerido |
 |--------|------|-----------|
 | name | String | ✅ |
-| email | String | ✅ (único) |
-| password | String (hashed con bcrypt) | ✅ |
+| email | String (único) | ✅ |
+| password | String (encriptada con bcrypt) | ✅ |
 
 ### 🟩 Categoría
 | Campo | Tipo | Requerido |
@@ -39,100 +51,104 @@ Tecnologías utilizadas
 |--------|------|-----------|
 | name | String | ✅ |
 | price | Number | ✅ |
-| image | String (archivo almacenado en `uploads/products`) | ✅ |
+| image | String (archivo almacenado en `/uploads/products/`) | ✅ |
 | category | ObjectId (ref: Category) | ✅ |
 
 ---
 
-Cómo ejecutar el proyecto
+## 🚀 Cómo ejecutar el proyecto
 
-repositorio del backend
-
-
-[git clone https://github.com/TU-USUARIO/e-commerce-Tienda-Back-Node.js.git
-cd e-commerce-Tienda-Back-Node.js](https://github.com/FlorenciaCampos/e-commerce-Tienda-Back-Node.js.git)
-
-repositorio del frontend
+### 📌 1. Clonar el repositorio del backend
 
 
-[https://github.com/FlorenciaCampos/micuoco-admin.git](https://github.com/FlorenciaCampos/micuoco-admin.git)
----
-Instalar dependencias
+git clone https://github.com/FlorenciaCampos/e-commerce-Tienda-Back-Node.js.git
+cd e-commerce-Tienda-Back-Node.js
 
+📌 2. Instalar dependencias
 npm install
 
----
-Iniciar el servidor
- 
- npm run dev
- 
- ----
-.env
- 
- PORT=3000
- MONGODB_URI=mongodb://127.0.0.1:27017/mi_cuoco
- SECRET=miclavesupersegura
- 
- ----
- 
- Servidor corriendo en http://localhost:3000
- --
+📌 3. Variables de entorno
 
-Endpoints
- 
-productsRoute
+Crear un archivo .env en la raíz del proyecto con:
 
-productRoute.get("/getProducts", getProducts);
+PORT=3000
+MONGODB_URI=mongodb://127.0.0.1:27017/mi_cuoco
+SECRET=miclavesupersegura
 
-productRoute.get("/getProducts/:id", getProductById);
+📌 4. Ejecutar el backend
 
-productRoute.post("/create", upload.single("image"), createProduct);
+npm run dev
 
-productRoute.put("/update/:id", upload.single("image"), updateProduct);
+Servidor corriendo en:
 
-productRoute.delete("/delete/:id", deleteProduct);
+👉 http://localhost:3000
 
---
-Se deja igualmente, los endpoints de Usuarios
+src/
+ ├── config/
+ │    └── multer.js
+ ├── controllers/
+ ├── models/
+ ├── routes/
+ ├── service/
+uploads/
+ └── products/
 
-UserRoute
+🔌 Endpoints de la API
 
+🟥 Productos
 
-userRoute.post("/create", createUser);
+Método	Endpoint	Descripción
 
-userRoute.get("/getUsers", getUsers)
+GET	/api/product/getProducts	Obtener todos los productos
 
-userRoute.post("/login", loginUser);
+GET	/api/product/getProducts/:id	Obtener producto por ID
 
-userRoute.delete("/deleteUser/:id", deleteUser)
+POST	/api/product/create	Crear producto (con imagen)
 
---
+PUT	/api/product/update/:id	Editar producto (con imagen opcional)
 
-Datos Mock
- 
-Login
+DELETE	/api/product/delete/:id	Eliminar producto
 
-mail:  florencia@gmail.com
+Todos los endpoints de crear / editar / eliminar requieren autenticación JWT.
+
+🧪 Datos Mock para probar
+
+🔑 Login
+email: florencia@gmail.com
 contraseña: Flor123#
 
-Se utiliza POSTMAN que recibe FORMDATA, NO JSON
-Método: POST
-Endpoint: http://localhost:3000/api/product/create
+Este usuario te permitirá obtener el token para realizar operaciones protegidas.
+🔐 Autenticación con Token (JWT)
+Para rutas protegidas se debe enviar el token en los headers:
+Authorization: Bearer TU_TOKEN
 
-En Postman:
 
-Ir a Body
+📤 Crear producto (POSTMAN - form-data)
+📌 Endpoint:
+POST http://localhost:3000/api/product/create
 
-Seleccionar form-data
+| KEY   | VALUE        | TYPE |
+| ----- | ------------ | ---- |
+| name  | Kit Mate     | text |
+| price | 6500         | text |
+| image | kit-mate.jpg | file |
 
-Cargar estos valores:
-KEY        | VALUE             | TYPE
-------------------------------------------------
-name       | Kit Mate          | text
-price      | 6500              | text
-image      | kit-mate.jpg      | file  
+📎 La imagen kit-mate.jpg viene incluida en:
+/assets/mock-images/
 
-La imagen de prueba (kit-mate.jpg) se encuentra en /assets/mock-images/ para usar en Postman.
+🌐 Repositorios
+
+| Tipo     | URL                                                                                                                                    |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Backend  | [https://github.com/FlorenciaCampos/e-commerce-Tienda-Back-Node.js](https://github.com/FlorenciaCampos/e-commerce-Tienda-Back-Node.js) |
+| Frontend | [https://github.com/FlorenciaCampos/micuoco-admin](https://github.com/FlorenciaCampos/micuoco-admin)                                   |
+
+👤 Autora
+
+Florencia Campos
+Trabajo práctico para Backend con MongoDB UTNLearning– Año 2025.
+
+
 
 
 
