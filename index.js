@@ -21,6 +21,12 @@ const __dirname = path.dirname(__filename);
 app.use(cors());
 app.use(express.json());
 
+// Ruta simple para probar que la API responde
+app.get("/", (req, res) => {
+  res.send("API de Cartas de Color funcionando ✅");
+});
+
+
 // ✅ Servir imágenes estáticas (solo UNA VEZ)
 app.use("/uploads", express.static(path.join(__dirname, "src/uploads")));
 
